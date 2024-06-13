@@ -34,16 +34,12 @@ public class ModuleManager {
       addModule(new HitBox());
       addModule(new Reach());
       addModule(new Velocity());
-      addModule(new Boost());
-      addModule(new InvMove());
       addModule(new KeepSprint());
       addModule(new NoSlow());
       addModule(new Speed());
       addModule(new Sprint());
       addModule(new StopMotion());
       addModule(new Timer());
-      addModule(new VClip());
-      addModule(new AutoJump());
       addModule(new AutoPlace());
       addModule(new FastPlace());
       addModule(new NoFall());
@@ -57,13 +53,10 @@ public class ModuleManager {
       addModule(new Tracers());
       addModule(new HUD());
       addModule(new Xray());
-      addModule(new BridgeInfo());
-      addModule(new DuelsStats());
       addModule(new MurderMystery());
       addModule(new SumoFences());
       addModule(new ClientNameSpoof());
       addModule(new FakeChat());
-      addModule(new NameHider());
       addModule(new StringEncrypt());
       addModule(new WaterBucket());
       addModule(new Terminal());
@@ -83,7 +76,6 @@ public class ModuleManager {
       addModule(new Healing());
       addModule(new Trajectories());
       addModule(new AutoWeapon());
-      addModule(new BedwarsOverlay());
 
       addModule(new FPSSpoofer());
 
