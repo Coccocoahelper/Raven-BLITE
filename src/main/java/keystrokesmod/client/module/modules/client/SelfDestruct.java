@@ -3,7 +3,6 @@ package keystrokesmod.client.module.modules.client;
 import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.utils.ChatHelper;
-import keystrokesmod.client.utils.DebugInfoRenderer;
 import keystrokesmod.client.utils.MouseManager;
 import keystrokesmod.keystroke.KeyStrokeRenderer;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,7 +31,6 @@ public class SelfDestruct extends Module {
 
       // dude your event system doesnt even work bruh
       MinecraftForge.EVENT_BUS.unregister(new Raven());
-      MinecraftForge.EVENT_BUS.unregister(new DebugInfoRenderer());
       MinecraftForge.EVENT_BUS.unregister(new MouseManager());
       MinecraftForge.EVENT_BUS.unregister(new KeyStrokeRenderer());
       MinecraftForge.EVENT_BUS.unregister(new ChatHelper());

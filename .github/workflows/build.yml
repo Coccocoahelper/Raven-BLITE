@@ -1,0 +1,32 @@
+name: Build
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Java setup
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: 8
+          cache: gradle
+
+      - name: Build
+        run: |
+          chmod +x ./gradlew
+          ./gradlew setupCiWorkspace --no-daemon
+          ./gradlew clean --no-daemon
+          ./gradlew build --no-daemon --refresh-dependencies
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: raven
+          path: build/libs/

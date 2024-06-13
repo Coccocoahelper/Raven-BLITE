@@ -29,7 +29,6 @@ public class ModuleManager {
       addModule(new LeftClicker());
       addModule(new RightClicker());
       addModule(new AimAssist());
-      addModule(new BurstClicker());
       addModule(new ClickAssist());
       addModule(new DelayRemover());
       addModule(new HitBox());
@@ -51,7 +50,6 @@ public class ModuleManager {
       addModule(new BedAura());
       addModule(new FallSpeed());
       addModule(new FastPlace());
-      addModule(new Freecam());
       addModule(new NoFall());
       addModule(new SafeWalk());
       addModule(new AntiBot());
@@ -67,13 +65,11 @@ public class ModuleManager {
       addModule(new DuelsStats());
       addModule(new MurderMystery());
       addModule(new SumoFences());
-      addModule(new SlyPort());
       addModule(new ClientNameSpoof());
       addModule(new FakeChat());
       addModule(new NameHider());
       addModule(new StringEncrypt());
       addModule(new WaterBucket());
-      //addModule(new AutoConfig());
       addModule(new Terminal());
       addModule(new GuiModule());
       addModule(new SelfDestruct());
@@ -90,17 +86,12 @@ public class ModuleManager {
       addModule(new Armour());
       addModule(new Healing());
       addModule(new Trajectories());
-      addModule(new WTap());
-      addModule(new BlockHit());
-      addModule(new STap());
       addModule(new AutoWeapon());
       addModule(new BedwarsOverlay());
 
-      addModule(new ShiftTap());
       addModule(new FPSSpoofer());
 
       addModule(new ExplicitB9NameTags());
-      addModule(new AutoBlock());
       addModule(new MiddleClick());
 
       // why ?
