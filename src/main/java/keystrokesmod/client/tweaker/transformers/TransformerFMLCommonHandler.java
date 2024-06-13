@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.ModuleManager;
-import keystrokesmod.client.module.modules.client.ClientNameSpoof;
 import net.minecraftforge.fml.common.Loader;
 import org.objectweb.asm.tree.*;
 
@@ -51,10 +50,6 @@ public class TransformerFMLCommonHandler implements Transformer {
     }
 
     public static String getModName() {
-        Module cns = Raven.moduleManager.getModuleByClazz(ClientNameSpoof.class);
-        if (cns != null && cns.isEnabled()){
-            return ClientNameSpoof.newName;
-        }
         List<String> modNames = Lists.newArrayListWithExpectedSize(3);
         modNames.add("fml");
         modNames.add("forge");

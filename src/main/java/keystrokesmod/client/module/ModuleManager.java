@@ -55,7 +55,6 @@ public class ModuleManager {
       addModule(new Xray());
       addModule(new MurderMystery());
       addModule(new SumoFences());
-      addModule(new ClientNameSpoof());
       addModule(new FakeChat());
       addModule(new StringEncrypt());
       addModule(new WaterBucket());

@@ -23,7 +23,6 @@ public class CommandManager {
         this.addCommand(new Discord());
         this.addCommand(new ConfigCommand());
         this.addCommand(new Clear());
-        this.addCommand(new Cname());
         this.addCommand(new Debug());
         this.addCommand(new Fakechat());
         this.addCommand(new Nick());
@@ -31,7 +30,6 @@ public class CommandManager {
         this.addCommand(new Shoutout());
         this.addCommand(new Friends());
         this.addCommand(new VersionCommand());
-        this.addCommand(new F3Name());
 
     }
 

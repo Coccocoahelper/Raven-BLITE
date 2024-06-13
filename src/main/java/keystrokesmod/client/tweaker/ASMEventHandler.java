@@ -6,7 +6,6 @@ import keystrokesmod.client.module.modules.combat.LeftClicker;
 import keystrokesmod.client.module.modules.combat.Reach;
 import keystrokesmod.client.module.modules.movement.KeepSprint;
 import keystrokesmod.client.module.modules.movement.NoSlow;
-import keystrokesmod.client.module.modules.other.NameHider;
 import keystrokesmod.client.module.modules.other.StringEncrypt;
 import keystrokesmod.client.module.modules.player.SafeWalk;
 import keystrokesmod.client.module.modules.render.AntiShuffle;
@@ -21,14 +20,9 @@ public class ASMEventHandler {
 
    /**
     * called when Minecraft format text
-    * ASM Modules : NameHider, AntiShuffle, StringEncrypt
+    * ASM Modules : AntiShuffle, StringEncrypt
     */
    public static String getUnformattedTextForChat(String s) {
-      Module nameHider = Raven.moduleManager.getModuleByClazz(NameHider.class);
-      if (nameHider != null && nameHider.isEnabled()) {
-         s = NameHider.getUnformattedTextForChat(s);
-      }
-
       Module antiShuffle = Raven.moduleManager.getModuleByClazz(StringEncrypt.class);
       if (antiShuffle != null && antiShuffle.isEnabled()) {
          s = AntiShuffle.getUnformattedTextForChat(s);
