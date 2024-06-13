@@ -34,9 +34,7 @@ public class ModuleManager {
       addModule(new HitBox());
       addModule(new Reach());
       addModule(new Velocity());
-      addModule(new BHop());
       addModule(new Boost());
-      addModule(new Fly());
       addModule(new InvMove());
       addModule(new KeepSprint());
       addModule(new NoSlow());
@@ -47,8 +45,6 @@ public class ModuleManager {
       addModule(new VClip());
       addModule(new AutoJump());
       addModule(new AutoPlace());
-      addModule(new BedAura());
-      addModule(new FallSpeed());
       addModule(new FastPlace());
       addModule(new NoFall());
       addModule(new SafeWalk());
