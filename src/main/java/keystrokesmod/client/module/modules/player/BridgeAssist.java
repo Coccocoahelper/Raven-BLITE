@@ -78,7 +78,7 @@ public class BridgeAssist extends Module {
         }
 
 
-        if (gliding){
+        if (gliding) {
             float fuckedYaw = mc.thePlayer.rotationYaw;
             float fuckedPitch = mc.thePlayer.rotationPitch;
 
@@ -190,8 +190,8 @@ public class BridgeAssist extends Module {
         this.waitingForAim = false;
     }
 
-    public void aimAt(float pitch, float yaw, float fuckedYaw, float fuckedPitch){
-       if(setLook.isToggled()) {
+    public void aimAt(float pitch, float yaw, float fuckedYaw, float fuckedPitch) {
+       if (setLook.isToggled()) {
                mc.thePlayer.rotationPitch = pitch + ((int)fuckedPitch/360) * 360;
                mc.thePlayer.rotationYaw = yaw;
         }

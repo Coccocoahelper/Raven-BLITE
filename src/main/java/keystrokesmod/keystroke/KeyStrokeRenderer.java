@@ -80,7 +80,7 @@ public class KeyStrokeRenderer {
       KeyStrokeKeyRenderer[] var4 = this.b;
       int var5 = var4.length;
 
-      for(int var6 = 0; var6 < var5; ++var6) {
+      for (int var6 = 0; var6 < var5; ++var6) {
          KeyStrokeKeyRenderer key = var4[var6];
          key.renderKey(x, y, textColor);
       }
@@ -91,7 +91,7 @@ public class KeyStrokeRenderer {
       KeyStrokeMouse[] var4 = this.c;
       int var5 = var4.length;
 
-      for(int var6 = 0; var6 < var5; ++var6) {
+      for (int var6 = 0; var6 < var5; ++var6) {
          KeyStrokeMouse button = var4[var6];
          button.n(x, y, textColor);
       }

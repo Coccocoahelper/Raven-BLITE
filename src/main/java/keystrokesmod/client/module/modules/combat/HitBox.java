@@ -41,7 +41,7 @@ public class HitBox extends Module {
 
    @SubscribeEvent
    public void m(MouseEvent e) {
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
       if (e.button == 0 && e.buttonstate && mv != null) {
          mc.objectMouseOver = mv;
       }
@@ -50,12 +50,12 @@ public class HitBox extends Module {
    @SubscribeEvent
    public void ef(TickEvent.RenderTickEvent ev) {
       // autoclick event
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
 
       Module autoClicker = Raven.moduleManager.getModuleByClazz(LeftClicker.class);
-      if(autoClicker != null && !autoClicker.isEnabled()) return;
+      if (autoClicker != null && !autoClicker.isEnabled()) return;
 
-      if (autoClicker != null && autoClicker.isEnabled() && Mouse.isButtonDown(0)){
+      if (autoClicker != null && autoClicker.isEnabled() && Mouse.isButtonDown(0)) {
          if (mv != null) {
             mc.objectMouseOver = mv;
          }

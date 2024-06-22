@@ -16,13 +16,7 @@
   <img src="https://img.shields.io/github/languages/top/Kopamed/Raven-bPLUS" alt="Java"/>
 </p>
 
-##### Discontinued due to lack of time, motivation, and because I no longer play.
-
-Raven b+ is built on top of Raven b3, adding quality of life improvements, bug fixes, and much more.<br>
-Discord:<br>
-<a href="https://discord.gg/QQMQfCRyNP"><img src="https://invidget.switchblade.xyz/QQMQfCRyNP" alt="https://discord.gg/QQMQfCRyNP"/></a><br>
-Backup: <br>
-<a href="https://discord.gg/XhVt9NMtBE"><img src="https://invidget.switchblade.xyz/XhVt9NMtBE" alt="https://discord.gg/XhVt9NMtBE"/></a><br>
+Raven bLITE is built on top of Raven B+, removing all unneeded features.<br>
 
 # Installation
 ## User
@@ -42,7 +36,6 @@ Backup: <br>
 https://imgur.com/a/X3G5R6W
 
 ## Known bugs
- - Discord RPC don't work on DARWIN (Mac OS)
  - Basically 100 other bugs which are minor but are also getting fixed.
 
 ## Improved Modules

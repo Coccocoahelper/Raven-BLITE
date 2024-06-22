@@ -12,17 +12,17 @@ public class Friends extends Command {
     }
 
     @Override
-    public void onCall(String[] args){
-        if (args.length == 0){
+    public void onCall(String[] args) {
+        if (args.length == 0) {
             listFriends();
         }
 
-        else if(args[0].equalsIgnoreCase("list")) {
+        else if (args[0].equalsIgnoreCase("list")) {
             listFriends();
         }
 
-        else if(args.length == 2){
-            if(args[0].equalsIgnoreCase("add")){
+        else if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("add")) {
                 boolean added = AimAssist.addFriend(args[1]);
                 if (added) {
                     print("Successfully added " + args[1] + " to your friends list!");
@@ -30,7 +30,7 @@ public class Friends extends Command {
                     print("An error occurred!");
                 }
             }
-            else if(args[0].equalsIgnoreCase("remove")){
+            else if (args[0].equalsIgnoreCase("remove")) {
                 boolean removed = AimAssist.removeFriend(args[1]);
                 if (removed) {
                     print("Successfully removed " + args[1] + " from your friends list!");
@@ -44,13 +44,13 @@ public class Friends extends Command {
         }
     }
 
-    public void listFriends(){
-        if(AimAssist.getFriends().isEmpty()){
+    public void listFriends() {
+        if (AimAssist.getFriends().isEmpty()) {
             print("You have no friends. :(");
         }
         else {
             print("Your friends are:");
-            for (Entity entity : AimAssist.getFriends()){
+            for (Entity entity : AimAssist.getFriends()) {
                 print(entity.getName());
             }
         }

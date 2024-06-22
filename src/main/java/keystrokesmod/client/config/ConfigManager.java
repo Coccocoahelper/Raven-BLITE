@@ -25,7 +25,7 @@ public class ConfigManager {
     private final ArrayList<Config> configs = new ArrayList<>();
 
     public ConfigManager() {
-        if(!configDirectory.isDirectory()){
+        if (!configDirectory.isDirectory()) {
             configDirectory.mkdirs();
         }
 
@@ -33,7 +33,7 @@ public class ConfigManager {
         File defaultFile = new File(configDirectory, "default.bplus");
         this.config = new Config(defaultFile);
 
-        if(!defaultFile.exists()) {
+        if (!defaultFile.exists()) {
             save();
         }
 
@@ -62,14 +62,14 @@ public class ConfigManager {
     /**
      * Parses through all the files in the cfg dir and creates a new config class for each one
      */
-    public void discoverConfigs(){
+    public void discoverConfigs() {
         configs.clear();
-        if(configDirectory.listFiles() == null || !(Objects.requireNonNull(configDirectory.listFiles()).length > 0))
+        if (configDirectory.listFiles() == null || !(Objects.requireNonNull(configDirectory.listFiles()).length > 0))
             return;  // nothing to discover if there are no files in the directory
 
-        for(File file : Objects.requireNonNull(configDirectory.listFiles())){
-            if(file.getName().endsWith(".bplus")){
-                if(!isOutdated(file)){
+        for (File file : Objects.requireNonNull(configDirectory.listFiles())) {
+            if (file.getName().endsWith(".bplus")) {
+                if (!isOutdated(file)) {
                     configs.add(new Config(
                             new File(file.getPath())
                     ));
@@ -78,11 +78,11 @@ public class ConfigManager {
         }
     }
 
-    public Config getConfig(){
+    public Config getConfig() {
         return config;
     }
 
-    public void save(){
+    public void save() {
         JsonObject data = new JsonObject();
         data.addProperty("version", Raven.versionManager.getClientVersion().getVersion());
         data.addProperty("author", "Unknown");
@@ -92,7 +92,7 @@ public class ConfigManager {
         data.addProperty("lastEditTime", System.currentTimeMillis());
 
         JsonObject modules = new JsonObject();
-        for(Module module : Raven.moduleManager.getModules()){
+        for (Module module : Raven.moduleManager.getModules()) {
             modules.add(module.getName(), module.getConfigAsJson());
         }
         data.add("modules", modules);
@@ -100,12 +100,12 @@ public class ConfigManager {
         config.save(data);
     }
 
-    public void setConfig(Config config){
+    public void setConfig(Config config) {
         this.config = config;
         JsonObject data = config.getData().get("modules").getAsJsonObject();
         List<Module> knownModules = new ArrayList<>(Raven.moduleManager.getModules());
-        for(Module module : knownModules){
-            if(data.has(module.getName())){
+        for (Module module : knownModules) {
+            if (data.has(module.getName())) {
                 module.applyConfigFromJson(
                         data.get(module.getName()).getAsJsonObject()
                 );
@@ -117,8 +117,8 @@ public class ConfigManager {
 
     public void loadConfigByName(String replace) {
         discoverConfigs(); // re-parsing the config folder to make sure we know which configs exist
-        for(Config config: configs) {
-            if(config.getName().equals(replace))
+        for (Config config: configs) {
+            if (config.getName().equals(replace))
                 setConfig(config);
         }
     }
@@ -135,16 +135,16 @@ public class ConfigManager {
     }
 
     public void resetConfig() {
-        for(Module module : Raven.moduleManager.getModules())
+        for (Module module : Raven.moduleManager.getModules())
             module.resetToDefaults();
         save();
     }
 
     public void deleteConfig(Config config) {
         config.file.delete();
-        if(config.getName().equals(this.config.getName())){
+        if (config.getName().equals(this.config.getName())) {
             discoverConfigs();
-            if(this.configs.size() < 2){
+            if (this.configs.size() < 2) {
                 this.resetConfig();
                 File defaultFile = new File(configDirectory, "default.bplus");
                 this.config = new Config(defaultFile);

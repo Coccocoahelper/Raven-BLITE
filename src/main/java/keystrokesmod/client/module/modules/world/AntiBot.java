@@ -30,7 +30,7 @@ public class AntiBot extends Module {
 
    @SubscribeEvent
    public void onEntityJoinWorld(EntityJoinWorldEvent event) {
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
       if (a.isToggled() && event.entity instanceof EntityPlayer && event.entity != mc.thePlayer) {
          newEnt.put((EntityPlayer)event.entity, System.currentTimeMillis());
       }
@@ -40,7 +40,7 @@ public class AntiBot extends Module {
    public void update() {
       if (a.isToggled() && !newEnt.isEmpty()) {
          long now = System.currentTimeMillis();
-         newEnt.values().removeIf((e) -> e < now - 4000L);
+         newEnt.values().removeif ((e) -> e < now - 4000L);
       }
 
    }

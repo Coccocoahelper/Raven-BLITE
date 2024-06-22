@@ -46,7 +46,7 @@ public class HUD extends Module {
       showedError = false;
    }
 
-   public void guiUpdate(){
+   public void guiUpdate() {
       colourModeDesc.setDesc(Utils.md + ColourModes.values()[(int) colourMode.getInput()-1]);
    }
 
@@ -74,36 +74,36 @@ public class HUD extends Module {
          int y = hudY;
          int del = 0;
 
-         if (!alphabeticalSort.isToggled()){
+         if (!alphabeticalSort.isToggled()) {
             if (positionMode == Utils.HUD.PositionMode.UPLEFT || positionMode == Utils.HUD.PositionMode.UPRIGHT) {
                Raven.moduleManager.sortShortLong();
             }
-            else if(positionMode == Utils.HUD.PositionMode.DOWNLEFT || positionMode == Utils.HUD.PositionMode.DOWNRIGHT) {
+            else if (positionMode == Utils.HUD.PositionMode.DOWNLEFT || positionMode == Utils.HUD.PositionMode.DOWNRIGHT) {
                Raven.moduleManager.sortLongShort();
             }
          }
 
 
          List<Module> en = new ArrayList<>(Raven.moduleManager.getModules());
-         if(en.isEmpty()) return;
+         if (en.isEmpty()) return;
 
          int textBoxWidth = Raven.moduleManager.getLongestActiveModule(mc.fontRendererObj);
          int textBoxHeight = Raven.moduleManager.getBoxHeight(mc.fontRendererObj, margin);
 
-         if(hudX < 0) {
+         if (hudX < 0) {
             hudX = margin;
          }
-         if(hudY < 0) {
+         if (hudY < 0) {
             {
                hudY = margin;
             }
          }
 
-         if(hudX + textBoxWidth > mc.displayWidth/2){
+         if (hudX + textBoxWidth > mc.displayWidth/2) {
             hudX = mc.displayWidth/2 - textBoxWidth - margin;
          }
 
-         if(hudY + textBoxHeight > mc.displayHeight/2){
+         if (hudY + textBoxHeight > mc.displayHeight/2) {
             hudY = mc.displayHeight/2 - textBoxHeight;
          }
 
@@ -223,11 +223,11 @@ public class HUD extends Module {
          if (HUD.positionMode == Utils.HUD.PositionMode.UPLEFT || HUD.positionMode == Utils.HUD.PositionMode.UPRIGHT) {
             var5.sort((o1, o2) -> Utils.mc.fontRendererObj.getStringWidth(o2) - Utils.mc.fontRendererObj.getStringWidth(o1));
          }
-         else if(HUD.positionMode == Utils.HUD.PositionMode.DOWNLEFT || HUD.positionMode == Utils.HUD.PositionMode.DOWNRIGHT) {
+         else if (HUD.positionMode == Utils.HUD.PositionMode.DOWNLEFT || HUD.positionMode == Utils.HUD.PositionMode.DOWNRIGHT) {
             var5.sort(Comparator.comparingInt(o2 -> Utils.mc.fontRendererObj.getStringWidth(o2)));
          }
 
-         if(HUD.positionMode == Utils.HUD.PositionMode.DOWNRIGHT || HUD.positionMode == Utils.HUD.PositionMode.UPRIGHT){
+         if (HUD.positionMode == Utils.HUD.PositionMode.DOWNRIGHT || HUD.positionMode == Utils.HUD.PositionMode.UPRIGHT) {
             for (String s : var5) {
                fr.drawString(s, (float) x + (gap - fr.getStringWidth(s)), (float) y, Color.white.getRGB(), HUD.dropShadow.isToggled());
                y += marginY;

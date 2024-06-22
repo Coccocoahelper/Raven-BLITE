@@ -59,7 +59,7 @@ public class Utils {
 
    public static class Player {
       public static void hotkeyToSlot(int slot) {
-         if(!isPlayerInGame())
+         if (!isPlayerInGame())
             return;
 
          mc.thePlayer.inventory.currentItem = slot;
@@ -150,16 +150,16 @@ public class Utils {
          }
       }
 
-      public static int getMaxDamageSlot(){
+      public static int getMaxDamageSlot() {
          int index = -1;
          double damage = -1;
 
          for (int slot = 0; slot <= 8; slot++) {
             ItemStack itemInSlot = mc.thePlayer.inventory.getStackInSlot(slot);
-            if(itemInSlot == null)
+            if (itemInSlot == null)
                continue;
-            for (AttributeModifier mooommHelp :itemInSlot.getAttributeModifiers().values()){
-               if(mooommHelp.getAmount() > damage) {
+            for (AttributeModifier mooommHelp :itemInSlot.getAttributeModifiers().values()) {
+               if (mooommHelp.getAmount() > damage) {
                   damage = mooommHelp.getAmount();
                   index = slot;
                }
@@ -182,8 +182,8 @@ public class Utils {
 
       public static ArrayList<Integer> playerWearingArmor() {
          ArrayList<Integer> wearingArmor = new ArrayList<>();
-         for(int armorPiece = 0; armorPiece < 4; armorPiece++){
-            if(mc.thePlayer.getCurrentArmor(armorPiece) != null){
+         for (int armorPiece = 0; armorPiece < 4; armorPiece++) {
+            if (mc.thePlayer.getCurrentArmor(armorPiece) != null) {
                if (armorPiece == 0) {
                   wearingArmor.add(3);
                } else if (armorPiece == 1) {
@@ -204,7 +204,7 @@ public class Utils {
             return 0;
          } else {
             ItemStack itemStack = mc.thePlayer.inventory.getStackInSlot(currentItem);
-            if(itemStack.getItem() instanceof ItemBlock) {
+            if (itemStack.getItem() instanceof ItemBlock) {
                return itemStack.stackSize;
             } else {
                return 0;
@@ -324,12 +324,12 @@ public class Utils {
          List<NetworkPlayerInfo> mmmm = new ArrayList<>();
          try{
             yes.addAll(mc.getNetHandler().getPlayerInfoMap());
-         }catch (NullPointerException r){
+         }catch (NullPointerException r) {
             return yes;
          }
 
-         for(NetworkPlayerInfo ergy43d : yes){
-            if(!mmmm.contains(ergy43d)){
+         for (NetworkPlayerInfo ergy43d : yes) {
+            if (!mmmm.contains(ergy43d)) {
                mmmm.add(ergy43d);
             }
          }
@@ -338,8 +338,8 @@ public class Utils {
       }
 
       public static boolean othersExist() {
-         for(Entity wut : mc.theWorld.getLoadedEntityList()){
-            if(wut instanceof EntityPlayer) return  true;
+         for (Entity wut : mc.theWorld.getLoadedEntityList()) {
+            if (wut instanceof EntityPlayer) return  true;
          }
          return false;
       }
@@ -375,7 +375,7 @@ public class Utils {
       }
 
       public static boolean isHyp() {
-         if(!Player.isPlayerInGame()) return false;
+         if (!Player.isPlayerInGame()) return false;
          try {
             return !mc.isSingleplayer() && mc.getCurrentServerData().serverIP.toLowerCase().contains("hypixel.net");
          } catch (Exception welpBruh) {
@@ -425,7 +425,7 @@ public class Utils {
          return astolfoColorsDraw(yOffset, yTotal, 2900F);
       }
 
-      public static int kopamedColoursDraw(int yOffset, int yTotal){
+      public static int kopamedColoursDraw(int yOffset, int yTotal) {
          float speed = 6428;
          float hue;
          try {
@@ -497,7 +497,7 @@ public class Utils {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(selection, selection);
             return true;
-         } catch (Exception fuck){
+         } catch (Exception fuck) {
             fuck.printStackTrace();
             return false;
          }
@@ -567,9 +567,9 @@ public class Utils {
          }
       }
 
-      public static int indexOf(String key, String[] wut){
-         for(int o = 0; o < wut.length; o++) {
-            if(wut[o].equals(key)) return o;
+      public static int indexOf(String key, String[] wut) {
+         for (int o = 0; o < wut.length; o++) {
+            if (wut[o].equals(key)) return o;
          }
          return -1;
       }
@@ -615,26 +615,26 @@ public class Utils {
          return dtf.format(now);
       }
 
-      public static String joinStringList(String[] wtf, String okwaht){
+      public static String joinStringList(String[] wtf, String okwaht) {
          if (wtf == null)
             return "";
-         if(wtf.length <= 1)
+         if (wtf.length <= 1)
             return "";
 
          StringBuilder finalString = new StringBuilder(wtf[0]);
 
-         for (int i = 1; i < wtf.length; i++){
+         for (int i = 1; i < wtf.length; i++) {
             finalString.append(okwaht).append(wtf[i]);
          }
 
          return finalString.toString();
       }
 
-      public static ArrayList<String> toArrayList(String[] fakeList){
+      public static ArrayList<String> toArrayList(String[] fakeList) {
          return new ArrayList<>(Arrays.asList(fakeList));
       }
 
-      public static List<String> StringListToList(String[] whytho){
+      public static List<String> StringListToList(String[] whytho) {
          List<String> howTohackNasaWorking2021NoScamDotCom = new ArrayList<>();
          Collections.addAll(howTohackNasaWorking2021NoScamDotCom, whytho);
          return howTohackNasaWorking2021NoScamDotCom;
@@ -713,11 +713,11 @@ public class Utils {
          return "";
       }
 
-      public static boolean isLink(String string){
+      public static boolean isLink(String string) {
          return string.startsWith("http") && string.contains(".") && string.contains("://");
       }
 
-      public static boolean isPasteeLink(String link){
+      public static boolean isPasteeLink(String link) {
          return isLink(link) && link.contains("paste.ee");
       }
 
@@ -731,7 +731,7 @@ public class Utils {
          return rawLink.toString();
       }
 
-      public static String createPaste(String name, String content){
+      public static String createPaste(String name, String content) {
 
 
          try {
@@ -1011,11 +1011,11 @@ public class Utils {
                      int base = 1;
                      d2p(0.0D, 95.0D, 10, 3, Color.black.getRGB());
 
-                     for(i = 0; i < 6; ++i) {
+                     for (i = 0; i < 6; ++i) {
                         d2p(0.0D, 95 + (10 - i), 3, 4, Color.black.getRGB());
                      }
 
-                     for(i = 0; i < 7; ++i) {
+                     for (i = 0; i < 7; ++i) {
                         d2p(0.0D, 95 + (10 - i), 2, 4, color);
                      }
 
@@ -1197,7 +1197,7 @@ public class Utils {
          int l = 0;
          long colourControl = 0L;
 
-         for(int i = 0; i < text.length(); ++i) {
+         for (int i = 0; i < text.length(); ++i) {
             char c = text.charAt(i);
             if (c == lineSplit) {
                ++l;
@@ -1222,20 +1222,20 @@ public class Utils {
          PositionMode positionMode = null;
          // up left
 
-         if(marginY < halfHeight) {
-            if(marginX < halfWidth) {
+         if (marginY < halfHeight) {
+            if (marginX < halfWidth) {
                positionMode = PositionMode.UPLEFT;
             }
-            if(marginX > halfWidth) {
+            if (marginX > halfWidth) {
                positionMode = PositionMode.UPRIGHT;
             }
          }
 
-         if(marginY > halfHeight) {
-            if(marginX < halfWidth) {
+         if (marginY > halfHeight) {
+            if (marginX < halfWidth) {
                positionMode = PositionMode.DOWNLEFT;
             }
-            if(marginX > halfWidth) {
+            if (marginX > halfWidth) {
                positionMode = PositionMode.DOWNRIGHT;
             }
          }
@@ -1256,7 +1256,7 @@ public class Utils {
          GlStateManager.color(r, g, b, a);
          worldrenderer.begin(6, DefaultVertexFormats.POSITION);
 
-         for(int i = 0; i < sides; ++i) {
+         for (int i = 0; i < sides; ++i) {
             double angle = 6.283185307179586D * (double)i / (double)sides + Math.toRadians(180.0D);
             worldrenderer.pos(x + Math.sin(angle) * (double)radius, y + Math.cos(angle) * (double)radius, 0.0D).endVertex();
          }
@@ -1288,7 +1288,7 @@ public class Utils {
          long ed = 15000L / (long)sides;
          long hed = ed / 2L;
 
-         for(int i = 0; i < sides * 2; ++i) {
+         for (int i = 0; i < sides * 2; ++i) {
             if (chroma) {
                if (i % 2 != 0) {
                   if (i == 47) {

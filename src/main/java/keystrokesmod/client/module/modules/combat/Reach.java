@@ -39,7 +39,7 @@ public class Reach extends Module {
    @SubscribeEvent
    public void onMouse(MouseEvent ev) {
       // legit event
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
       Module autoClicker = Raven.moduleManager.getModuleByClazz(LeftClicker.class);
       if (autoClicker != null && autoClicker.isEnabled() && Mouse.isButtonDown(0)) return;
       if (ev.button >= 0 && ev.buttonstate) {
@@ -50,11 +50,11 @@ public class Reach extends Module {
    @SubscribeEvent
    public void onRenderTick(TickEvent.RenderTickEvent ev) {
       // autoclick event
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
       Module autoClicker = Raven.moduleManager.getModuleByClazz(LeftClicker.class);
       if (autoClicker == null || !autoClicker.isEnabled()) return;
 
-      if (autoClicker.isEnabled()  && Mouse.isButtonDown(0)){
+      if (autoClicker.isEnabled()  && Mouse.isButtonDown(0)) {
          call();
       }
    }

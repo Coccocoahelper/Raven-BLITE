@@ -50,7 +50,7 @@ public class SliderSetting extends Setting {
 
    @Override
    public void applyConfigFromJson(JsonObject data) {
-      if(!data.get("type").getAsString().equals(getSettingType()))
+      if (!data.get("type").getAsString().equals(getSettingType()))
          return;
 
       setValue(data.get("value").getAsDouble());

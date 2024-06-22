@@ -49,29 +49,29 @@ public class BlockHit extends Module {
 
     @SubscribeEvent
     public void onTick(TickEvent.RenderTickEvent e) {
-        if(!Utils.Player.isPlayerInGame())
+        if (!Utils.Player.isPlayerInGame())
             return;
 
-        if(onRightMBHold.isToggled() && !Utils.Player.tryingToCombo()){
-            if(!safeGuard || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
+        if (onRightMBHold.isToggled() && !Utils.Player.tryingToCombo()) {
+            if (!safeGuard || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
                 safeGuard = true;
                 finishCombo();
             }
             return;
         }
-        if(waitingForPostDelay){
-            if(postDelayTimer.hasFinished()){
+        if (waitingForPostDelay) {
+            if (postDelayTimer.hasFinished()) {
                 executingAction = true;
                 startCombo();
                 waitingForPostDelay = false;
-                if(safeGuard) safeGuard = false;
+                if (safeGuard) safeGuard = false;
                 actionTimer.start();
             }
             return;
         }
 
-        if(executingAction) {
-            if(actionTimer.hasFinished()){
+        if (executingAction) {
+            if (actionTimer.hasFinished()) {
                 executingAction = false;
                 finishCombo();
                 return;
@@ -80,17 +80,17 @@ public class BlockHit extends Module {
             }
         }
 
-        if(onRightMBHold.isToggled() && Utils.Player.tryingToCombo()) {
-            if(mc.objectMouseOver == null || mc.objectMouseOver.entityHit == null) {
-                if(!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
+        if (onRightMBHold.isToggled() && Utils.Player.tryingToCombo()) {
+            if (mc.objectMouseOver == null || mc.objectMouseOver.entityHit == null) {
+                if (!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
                     safeGuard = true;
                     finishCombo();
                 }
                 return;
             } else {
                 Entity target = mc.objectMouseOver.entityHit;
-                if(target.isDead) {
-                    if(!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
+                if (target.isDead) {
+                    if (!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
                         safeGuard = true;
                         finishCombo();
                     }
@@ -101,9 +101,9 @@ public class BlockHit extends Module {
 
         if (mc.objectMouseOver != null && mc.objectMouseOver.entityHit instanceof Entity && Mouse.isButtonDown(0)) {
             Entity target = mc.objectMouseOver.entityHit;
-            if(target.isDead) {
-                if(onRightMBHold.isToggled() && Mouse.isButtonDown(1) && Mouse.isButtonDown(0)) {
-                    if(!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
+            if (target.isDead) {
+                if (onRightMBHold.isToggled() && Mouse.isButtonDown(1) && Mouse.isButtonDown(0)) {
+                    if (!safeGuard  || Utils.Player.isPlayerHoldingWeapon() && Mouse.isButtonDown(0)) {
                         safeGuard = true;
                         finishCombo();
                     }
@@ -114,20 +114,20 @@ public class BlockHit extends Module {
             if (mc.thePlayer.getDistanceToEntity(target) <= range.getInput()) {
                 if ((target.hurtResistantTime >= 10 && Utils.Modes.SprintResetTimings.values()[(int) eventType.getInput() - 1] == Utils.Modes.SprintResetTimings.POST) || (target.hurtResistantTime <= 10 && Utils.Modes.SprintResetTimings.values()[(int) eventType.getInput() - 1] == Utils.Modes.SprintResetTimings.PRE)) {
 
-                    if (onlyPlayers.isToggled()){
-                        if (!(target instanceof EntityPlayer)){
+                    if (onlyPlayers.isToggled()) {
+                        if (!(target instanceof EntityPlayer)) {
                             return;
                         }
                     }
 
-                    if(AntiBot.bot(target)){
+                    if (AntiBot.bot(target)) {
                         return;
                     }
 
 
                     if (hitCoolDown && !alreadyHit) {
                         hitsWaited++;
-                        if(hitsWaited >= hitTimeout){
+                        if (hitsWaited >= hitTimeout) {
                             hitCoolDown = false;
                             hitsWaited = 0;
                         } else {
@@ -136,12 +136,12 @@ public class BlockHit extends Module {
                         }
                     }
 
-                    if(!(chance.getInput() == 100 || Math.random() <= chance.getInput() / 100))
+                    if (!(chance.getInput() == 100 || Math.random() <= chance.getInput() / 100))
                         return;
 
-                    if(!alreadyHit){
+                    if (!alreadyHit) {
                         guiUpdate();
-                        if(hitPer.getInputMin() == hitPer.getInputMax()) {
+                        if (hitPer.getInputMin() == hitPer.getInputMax()) {
                             hitTimeout =  (int) hitPer.getInputMin();
                         } else {
 
@@ -151,7 +151,7 @@ public class BlockHit extends Module {
                         hitsWaited = 0;
 
                         actionTimer.setCooldown((long)ThreadLocalRandom.current().nextDouble(waitMs.getInputMin(),  waitMs.getInputMax()+0.01));
-                        if(postDelay.getInputMax() != 0){
+                        if (postDelay.getInputMax() != 0) {
                             postDelayTimer.setCooldown((long)ThreadLocalRandom.current().nextDouble(postDelay.getInputMin(),  postDelay.getInputMax()+0.01));
                             postDelayTimer.start();
                             waitingForPostDelay = true;
@@ -160,16 +160,16 @@ public class BlockHit extends Module {
                             startCombo();
                             actionTimer.start();
                             alreadyHit = true;
-                            if(safeGuard) safeGuard = false;
+                            if (safeGuard) safeGuard = false;
                         }
                         alreadyHit = true;
                     }
                 } else {
-                    if(alreadyHit){
+                    if (alreadyHit) {
                         alreadyHit = false;
                     }
 
-                    if(safeGuard) safeGuard = false;
+                    if (safeGuard) safeGuard = false;
                 }
             }
         }
@@ -182,7 +182,7 @@ public class BlockHit extends Module {
     }
 
     private static void startCombo() {
-        if(Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode())) {
+        if (Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode())) {
             int key = mc.gameSettings.keyBindUseItem.getKeyCode();
             KeyBinding.setKeyBindState(key, true);
             KeyBinding.onTick(key);

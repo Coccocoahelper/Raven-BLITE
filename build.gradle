@@ -25,7 +25,7 @@ compileJava {
 
 dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
-    compile fileTree(dir: "lib", include: "discord-rpc.jar")
+    compile fileTree(dir: "lib")
 }
 
 

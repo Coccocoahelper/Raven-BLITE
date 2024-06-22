@@ -34,7 +34,7 @@ public class ClickGui extends GuiScreen {
       Module.ModuleCategory[] values;
       int categoryAmount = (values = Module.ModuleCategory.values()).length;
 
-      for(int category = 0; category < categoryAmount; ++category) {
+      for (int category = 0; category < categoryAmount; ++category) {
          Module.ModuleCategory moduleCategory = values[category];
          CategoryComponent currentModuleCategory = new CategoryComponent(moduleCategory);
          currentModuleCategory.setY(topOffset);
@@ -74,7 +74,7 @@ public class ClickGui extends GuiScreen {
 
       float speed = 4890;
 
-      if(latestVersion.isNewerThan(clientVersion)){
+      if (latestVersion.isNewerThan(clientVersion)) {
          int margin = 2;
          int rows = 1;
          for (int i = Raven.updateText.length-1; i >= 0; i--) {
@@ -117,7 +117,7 @@ public class ClickGui extends GuiScreen {
       Iterator<CategoryComponent> btnCat = categoryList.iterator();
 
       terminal.mouseDown(x, y, mouseButton);
-      if(terminal.overPosition(x, y)) return;
+      if (terminal.overPosition(x, y)) return;
 
       while(true) {
          CategoryComponent category;
@@ -152,7 +152,7 @@ public class ClickGui extends GuiScreen {
 
    public void mouseReleased(int x, int y, int s) {
       terminal.mouseReleased(x, y, s);
-      if(terminal.overPosition(x, y)) return;
+      if (terminal.overPosition(x, y)) return;
 
       if (s == 0) {
          Iterator<CategoryComponent> btnCat = categoryList.iterator();
@@ -181,7 +181,7 @@ public class ClickGui extends GuiScreen {
             }
          }
       }
-      if(Raven.clientConfig != null){
+      if (Raven.clientConfig != null) {
          Raven.clientConfig.saveConfig();
       }
    }

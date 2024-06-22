@@ -34,30 +34,30 @@ public class Module {
       mc = Minecraft.getMinecraft();
    }
 
-   protected <E extends Module> E withKeycode(int i){
+   protected <E extends Module> E withKeycode(int i) {
       this.keycode = i;
       this.defualtKeyCode = i;
       return (E) this;
    }
 
-   protected  <E extends Module> E withEnabled(boolean i){
+   protected  <E extends Module> E withEnabled(boolean i) {
       this.enabled = i;
       this.defaultEnabled = i;
       try{
          setToggled(i);
-      } catch (Exception e){}
+      } catch (Exception e) {}
       return (E) this;
    }
 
-   public <E extends Module> E withDescription(String i){
+   public <E extends Module> E withDescription(String i) {
       this.description = i;
       return (E) this;
    }
 
-   public JsonObject getConfigAsJson(){
+   public JsonObject getConfigAsJson() {
       JsonObject settings = new JsonObject();
 
-      for(Setting setting : this.settings){
+      for (Setting setting : this.settings) {
          JsonObject settingData = setting.getConfigAsJson();
          settings.add(setting.settingName, settingData);
       }
@@ -70,7 +70,7 @@ public class Module {
       return data;
    }
 
-   public void applyConfigFromJson(JsonObject data){
+   public void applyConfigFromJson(JsonObject data) {
       try {
          this.keycode = data.get("keycode").getAsInt();
          setToggled(data.get("enabled").getAsBoolean());
@@ -82,7 +82,7 @@ public class Module {
                );
             }
          }
-      } catch (NullPointerException ignored){
+      } catch (NullPointerException ignored) {
 
       }
    }
@@ -119,7 +119,7 @@ public class Module {
    }
 
    public void setToggled(boolean enabled) {
-      if(enabled){
+      if (enabled) {
          enable();
       } else{
          disable();
@@ -189,7 +189,7 @@ public class Module {
       this.keycode = defualtKeyCode;
       this.setToggled(defaultEnabled);
 
-      for(Setting setting : this.settings){
+      for (Setting setting : this.settings) {
          setting.resetToDefaults();
       }
    }
@@ -198,7 +198,7 @@ public class Module {
 
    }
 
-   public String getBindAsString(){
+   public String getBindAsString() {
       return keycode == 0 ? "None" : Keyboard.getKeyName(keycode);
    }
 

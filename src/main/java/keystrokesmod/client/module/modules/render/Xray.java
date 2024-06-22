@@ -62,9 +62,9 @@ public class Xray extends Module {
             Xray.this.ren.clear();
             int ra = (int)Xray.r.getInput();
 
-            for(int y = ra; y >= -ra; --y) {
-               for(int x = -ra; x <= ra; ++x) {
-                  for(int z = -ra; z <= ra; ++z) {
+            for (int y = ra; y >= -ra; --y) {
+               for (int x = -ra; x <= ra; ++x) {
+                  for (int z = -ra; z <= ra; ++z) {
                      if (Utils.Player.isPlayerInGame()) {
                         BlockPos p = new BlockPos(Module.mc.thePlayer.posX + (double)x, Module.mc.thePlayer.posY + (double)y, Module.mc.thePlayer.posZ + (double)z);
                         Block bl = Module.mc.theWorld.getBlockState(p).getBlock();

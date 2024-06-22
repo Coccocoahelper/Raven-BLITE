@@ -46,14 +46,14 @@ public class MiddleClick extends Module {
 
     @SubscribeEvent
     public void onTick(TickEvent.PlayerTickEvent e) {
-        if(!Utils.Player.isPlayerInGame()) return;
+        if (!Utils.Player.isPlayerInGame()) return;
 
-        if(pearlEvent < 4){
-            if(pearlEvent==3) mc.thePlayer.inventory.currentItem = prevSlot;
+        if (pearlEvent < 4) {
+            if (pearlEvent==3) mc.thePlayer.inventory.currentItem = prevSlot;
             pearlEvent++;
         }
 
-        if(Mouse.isButtonDown(2) && !hasClicked) {
+        if (Mouse.isButtonDown(2) && !hasClicked) {
             if (ThrowPearl.equals(actionSetting.getMode())) {
                 for (int slot = 0; slot <= 8; slot++) {
                     ItemStack itemInSlot = mc.thePlayer.inventory.getStackInSlot(slot);
@@ -75,20 +75,20 @@ public class MiddleClick extends Module {
                 if (showHelp.isToggled()) showHelpMessage();
             }
             hasClicked = true;
-        } else if(!Mouse.isButtonDown(2) && hasClicked) {
+        } else if (!Mouse.isButtonDown(2) && hasClicked) {
             hasClicked = false;
         }
     }
 
     private void showHelpMessage() {
-        if(showHelp.isToggled()) {
+        if (showHelp.isToggled()) {
             Utils.Player.sendMessageToSelf("Run 'help friends' in CommandLine to find out how to add, remove and view friends.");
         }
     }
 
     private void removeFriend() {
         Entity player = mc.objectMouseOver.entityHit;
-        if(player == null) {
+        if (player == null) {
             Utils.Player.sendMessageToSelf("Please aim at a player/entity when removing them.");
         } else {
             if (AimAssist.removeFriend(player)) {
@@ -101,7 +101,7 @@ public class MiddleClick extends Module {
 
     private void addFriend() {
         Entity player = mc.objectMouseOver.entityHit;
-        if(player == null) {
+        if (player == null) {
             Utils.Player.sendMessageToSelf("Please aim at a player/entity when adding them.");
         }
         else {

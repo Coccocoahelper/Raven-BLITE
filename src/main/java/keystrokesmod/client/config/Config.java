@@ -11,11 +11,11 @@ public class Config {
     public final long creationDate;
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public Config(File pathToFile){
+    public Config(File pathToFile) {
         long creationDate1;
         this.file = pathToFile;
 
-        if(!file.exists()){
+        if (!file.exists()) {
             creationDate1 = System.currentTimeMillis();
             try {
                 file.createNewFile();
@@ -25,18 +25,18 @@ public class Config {
         }  else {
             try {
                 creationDate1 = getData().get("creationTime").getAsLong();
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 creationDate1 = 0L;
             }
         }
         this.creationDate = creationDate1;
     }
 
-    public String getName(){
+    public String getName() {
         return file.getName().replace(".bplus", "");
     }
 
-    public JsonObject getData(){
+    public JsonObject getData() {
         JsonParser jsonParser = new JsonParser();
         try (FileReader reader = new FileReader(file))
         {
@@ -48,7 +48,7 @@ public class Config {
         return null;
     }
 
-    public void save(JsonObject data){
+    public void save(JsonObject data) {
         data.addProperty("creationTime", creationDate);
         try (PrintWriter out = new PrintWriter(new FileWriter(file))) {
             out.write(data.toString());

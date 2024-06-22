@@ -44,7 +44,7 @@ public class KeyStrokeMod {
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent e){
+    public void onTick(TickEvent.ClientTickEvent e) {
         if (isKeyStrokeConfigGuiToggled) {
             isKeyStrokeConfigGuiToggled = false;
             Minecraft.getMinecraft().displayGuiScreen(new KeyStrokeConfigGui());

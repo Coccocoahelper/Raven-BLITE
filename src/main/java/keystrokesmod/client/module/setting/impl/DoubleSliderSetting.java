@@ -55,7 +55,7 @@ public class DoubleSliderSetting extends Setting {
 
     @Override
     public void applyConfigFromJson(JsonObject data) {
-        if(!data.get("type").getAsString().equals(getSettingType()))
+        if (!data.get("type").getAsString().equals(getSettingType()))
             return;
 
         setValueMax(data.get("valueMax").getAsDouble());

@@ -11,8 +11,8 @@ public class ConfigCommand extends Command {
     }
 
     @Override
-    public void onCall(String[] args){
-        if(Raven.clientConfig != null){
+    public void onCall(String[] args) {
+        if (Raven.clientConfig != null) {
             Raven.clientConfig.saveConfig();
             Raven.configManager.save(); // as now configs only save upon exiting the gui, this is required
         }
@@ -24,7 +24,7 @@ public class ConfigCommand extends Command {
         else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("list")) {
                 this.listConfigs();
-            } else if(args[0].equalsIgnoreCase("clear")){
+            } else if (args[0].equalsIgnoreCase("clear")) {
                 Terminal.print("Are you sure you want to reset the config " + Raven.configManager.getConfig().getName() + "? If so, run \"config clear confirm\"");
             }
             else {
@@ -62,8 +62,8 @@ public class ConfigCommand extends Command {
             else if (args[0].equalsIgnoreCase("remove")) {
                 boolean found = false;
                 Terminal.print("Removing " + args[1] + "...");
-                for(Config config : Raven.configManager.getConfigs()){
-                    if(config.getName().equalsIgnoreCase(args[1])){
+                for (Config config : Raven.configManager.getConfigs()) {
+                    if (config.getName().equalsIgnoreCase(args[1])) {
                         Raven.configManager.deleteConfig(config);
                         found = true;
                         Terminal.print("Removed " + args[1] + " successfully! Current config: " + Raven.configManager.getConfig().getName());
@@ -71,12 +71,12 @@ public class ConfigCommand extends Command {
                     }
                 }
 
-                if(!found) {
+                if (!found) {
                     Terminal.print("Failed to delete " + args[1] + ". Unable to find a config with the name or an error occurred during removal");
                 }
 
-            } else if(args[0].equalsIgnoreCase("clear")) {
-                if(args[1].equalsIgnoreCase("confirm")){
+            } else if (args[0].equalsIgnoreCase("clear")) {
+                if (args[1].equalsIgnoreCase("confirm")) {
                     Raven.configManager.resetConfig();
                     Raven.configManager.save();
                     Terminal.print("Cleared config!");

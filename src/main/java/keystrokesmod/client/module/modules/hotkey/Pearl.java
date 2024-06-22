@@ -27,15 +27,15 @@ public class Pearl extends Module {
     }
 
     @Override
-    public void onEnable(){
-        if (!Utils.Player.isPlayerInGame()){
+    public void onEnable() {
+        if (!Utils.Player.isPlayerInGame()) {
             return;
         }
 
         if (preferSlot.isToggled()) {
             int preferedSlot = (int) hotbarSlotPreference.getInput() - 1;
 
-            if(checkSlot(preferedSlot)) {
+            if (checkSlot(preferedSlot)) {
                 mc.thePlayer.inventory.currentItem = preferedSlot;
                 this.disable();
                 return;

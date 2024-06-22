@@ -27,7 +27,7 @@ public class ShiftTap extends Module {
     public static int hitTimeout, hitsWaited;
     public static CoolDown actionTimer = new CoolDown(0), postDelayTimer = new CoolDown(0);
 
-    public ShiftTap(){
+    public ShiftTap() {
         super("ShiftTap", ModuleCategory.combat);
         this.registerSetting(onlyPlayers = new TickSetting("Only combo players", true));
         this.registerSetting(actionTicks = new DoubleSliderSetting("Action Time (MS)",  25, 55, 1, 500, 1));
@@ -47,11 +47,11 @@ public class ShiftTap extends Module {
 
     @SubscribeEvent
     public void onTick(TickEvent.RenderTickEvent e) {
-        if(!Utils.Player.isPlayerInGame())
+        if (!Utils.Player.isPlayerInGame())
             return;
 
-        if(waitingForPostDelay){
-            if(postDelayTimer.hasFinished()){
+        if (waitingForPostDelay) {
+            if (postDelayTimer.hasFinished()) {
                 waitingForPostDelay = false;
                 comboing = true;
                 startCombo();
@@ -60,8 +60,8 @@ public class ShiftTap extends Module {
             return;
         }
 
-        if(comboing) {
-            if(actionTimer.hasFinished()){
+        if (comboing) {
+            if (actionTimer.hasFinished()) {
                 comboing = false;
                 finishCombo();
                 return;
@@ -74,27 +74,27 @@ public class ShiftTap extends Module {
 
         if (mc.objectMouseOver != null && mc.objectMouseOver.entityHit instanceof Entity && Mouse.isButtonDown(0)) {
             Entity target = mc.objectMouseOver.entityHit;
-            if(target.isDead) {
+            if (target.isDead) {
                 return;
             }
 
             if (mc.thePlayer.getDistanceToEntity(target) <= range.getInput()) {
                 if ((target.hurtResistantTime >= 10 && Utils.Modes.SprintResetTimings.values()[(int) eventType.getInput() - 1] == Utils.Modes.SprintResetTimings.POST) || (target.hurtResistantTime <= 10 && Utils.Modes.SprintResetTimings.values()[(int) eventType.getInput() - 1] == Utils.Modes.SprintResetTimings.PRE)) {
 
-                    if (onlyPlayers.isToggled()){
-                        if (!(target instanceof EntityPlayer)){
+                    if (onlyPlayers.isToggled()) {
+                        if (!(target instanceof EntityPlayer)) {
                             return;
                         }
                     }
 
-                    if(AntiBot.bot(target)){
+                    if (AntiBot.bot(target)) {
                         return;
                     }
 
 
                     if (hitCoolDown && !alreadyHit) {
                         hitsWaited++;
-                        if(hitsWaited >= hitTimeout){
+                        if (hitsWaited >= hitTimeout) {
                             hitCoolDown = false;
                             hitsWaited = 0;
                         } else {
@@ -103,12 +103,12 @@ public class ShiftTap extends Module {
                         }
                     }
 
-                    if(!(chance.getInput() == 100 || Math.random() <= chance.getInput() / 100))
+                    if (!(chance.getInput() == 100 || Math.random() <= chance.getInput() / 100))
                         return;
 
-                    if(!alreadyHit){
+                    if (!alreadyHit) {
                         guiUpdate();
-                        if(onceEvery.getInputMin() == onceEvery.getInputMax()) {
+                        if (onceEvery.getInputMin() == onceEvery.getInputMax()) {
                             hitTimeout =  (int)onceEvery.getInputMin();
                         } else {
 
@@ -119,7 +119,7 @@ public class ShiftTap extends Module {
 
                         actionTimer.setCooldown((long)ThreadLocalRandom.current().nextDouble(actionTicks.getInputMin(),  actionTicks.getInputMax()+0.01));
 
-                        if(postDelay.getInputMax() != 0){
+                        if (postDelay.getInputMax() != 0) {
                             postDelayTimer.setCooldown((long)ThreadLocalRandom.current().nextDouble(postDelay.getInputMin(),  postDelay.getInputMax()+0.01));
                             postDelayTimer.start();
                             waitingForPostDelay = true;
@@ -132,7 +132,7 @@ public class ShiftTap extends Module {
                         alreadyHit = true;
                     }
                 } else {
-                    if(alreadyHit){
+                    if (alreadyHit) {
                     }
                     alreadyHit = false;
                 }
@@ -141,12 +141,12 @@ public class ShiftTap extends Module {
     }
 
     private static void finishCombo() {
-        if(!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()))
+        if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()))
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindSneak.getKeyCode(), false);
     }
 
     private static void startCombo() {
-        if(Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode())) {
+        if (Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode())) {
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindSneak.getKeyCode(), true);
             KeyBinding.onTick(mc.gameSettings.keyBindSneak.getKeyCode());
         }

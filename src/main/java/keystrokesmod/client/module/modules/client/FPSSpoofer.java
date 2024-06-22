@@ -33,14 +33,14 @@ public class FPSSpoofer extends Module {
         return fpsField != null;
     }
 
-    public void onEnable(){
+    public void onEnable() {
         ticksPassed = 0;
     }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event){
-        if(event.phase == TickEvent.Phase.START){
-            //if(ticksPassed % 20 == 0) {
+    public void onTick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) {
+            //if (ticksPassed % 20 == 0) {
                 guiUpdate();
 
                 try {

@@ -24,7 +24,7 @@ public class RangeSliderComponent implements Component {
     private final int boxHeight = 4;
     private final int textSize = 11;
 
-    public RangeSliderComponent(DoubleSliderSetting doubleSlider, ModuleComponent module, int moduleStartY){
+    public RangeSliderComponent(DoubleSliderSetting doubleSlider, ModuleComponent module, int moduleStartY) {
         this.doubleSlider = doubleSlider;
         this.module = module;
         this.sliderStartX = this.module.category.getX() + boxMargin;
@@ -32,7 +32,7 @@ public class RangeSliderComponent implements Component {
         this.moduleStartY = moduleStartY;
     }
 
-    public void draw(){
+    public void draw() {
         //drawing the grey box lol
         net.minecraft.client.gui.Gui.drawRect(this.module.category.getX() + boxMargin, this.module.category.getY() + this.moduleStartY + textSize, this.module.category.getX() - boxMargin + this.module.category.getWidth(), this.module.category.getY() + this.moduleStartY + textSize + boxHeight, -12302777);
         int startToDrawFrom = this.module.category.getX() + boxMargin + (int) this.blankWidth;
@@ -58,7 +58,7 @@ public class RangeSliderComponent implements Component {
         return 0;
     }
 
-    public void update(int mousePosX, int mousePosY){
+    public void update(int mousePosX, int mousePosY) {
         this.sliderStartY = this.module.category.getY() + this.moduleStartY;
         this.sliderStartX = this.module.category.getX() + boxMargin;
 
@@ -73,13 +73,13 @@ public class RangeSliderComponent implements Component {
 
 
 
-      //  if(this.module.category.inUse && this.mode==Helping.NONE){
-           if(this.mouseDown) {
+      //  if (this.module.category.inUse && this.mode==Helping.NONE) {
+           if (this.mouseDown) {
 
                if (mousePressedAt > blankWidth + barWidth / 2 || mode == Helping.MAX) {
                    //manipulate max slider
                    if (this.mode == Helping.NONE) this.mode = Helping.MAX;
-                   if(this.mode == Helping.MAX){
+                   if (this.mode == Helping.MAX) {
                        if (mousePressedAt <= blankWidth) {
                            this.doubleSlider.setValueMax(this.doubleSlider.getInputMin());
                        } else {
@@ -96,10 +96,10 @@ public class RangeSliderComponent implements Component {
                if (mousePressedAt < blankWidth + barWidth / 2 || mode == Helping.MIN) {
                    //manipulate min slider
                    if (this.mode == Helping.NONE) this.mode = Helping.MIN;
-                   if(this.mode == Helping.MIN) {
+                   if (this.mode == Helping.MIN) {
                        if (mousePressedAt == 0.0D) {
                            this.doubleSlider.setValueMin(this.doubleSlider.getMin());
-                       } else if(mousePressedAt >= barWidth + blankWidth){
+                       } else if (mousePressedAt >= barWidth + blankWidth) {
                            this.doubleSlider.setValueMin(this.doubleSlider.getMax());
                        }else {
                            double n = r(mousePressedAt
@@ -111,7 +111,7 @@ public class RangeSliderComponent implements Component {
                    }
                }
            } else {
-               if(mode != Helping.NONE) mode = Helping.NONE;
+               if (mode != Helping.NONE) mode = Helping.NONE;
            }
 
        // }

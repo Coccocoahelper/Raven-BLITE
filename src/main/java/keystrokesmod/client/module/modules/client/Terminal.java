@@ -35,8 +35,8 @@ public class Terminal extends Module {
    }
 
    @SubscribeEvent
-   public void tick(TickEvent.PlayerTickEvent e){
-      if(Utils.Player.isPlayerInGame() && enabled && mc.currentScreen instanceof ClickGui && Raven.clickGui.terminal.hidden())
+   public void tick(TickEvent.PlayerTickEvent e) {
+      if (Utils.Player.isPlayerInGame() && enabled && mc.currentScreen instanceof ClickGui && Raven.clickGui.terminal.hidden())
          Raven.clickGui.terminal.show();
    }
 
@@ -51,7 +51,7 @@ public class Terminal extends Module {
    }
 
    @Override
-   public void applyConfigFromJson(JsonObject data){
+   public void applyConfigFromJson(JsonObject data) {
       try {
          this.keycode = data.get("keycode").getAsInt();
          // no need to set this to disabled
@@ -63,7 +63,7 @@ public class Terminal extends Module {
                );
             }
          }
-      } catch (NullPointerException ignored){
+      } catch (NullPointerException ignored) {
 
       }
    }
@@ -72,7 +72,7 @@ public class Terminal extends Module {
    public void resetToDefaults() {
       this.keycode = defualtKeyCode;
 
-      for(Setting setting : this.settings){
+      for (Setting setting : this.settings) {
          setting.resetToDefaults();
       }
    }

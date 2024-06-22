@@ -111,37 +111,37 @@ public class RightClicker extends Module {
 
    @SubscribeEvent
    public void onRenderTick(RenderTickEvent ev) {
-      if(!Utils.Client.currentScreenMinecraft() &&
+      if (!Utils.Client.currentScreenMinecraft() &&
               !(Minecraft.getMinecraft().currentScreen instanceof GuiInventory) // to make it work in survival inventory
           && !(Minecraft.getMinecraft().currentScreen instanceof GuiChest) // to make it work in chests
       )
          return;
 
-      if(clickTimings.getMode() != ClickEvent.Render)
+      if (clickTimings.getMode() != ClickEvent.Render)
          return;
 
-      if(clickStyle.getMode() == ClickStyle.Raven){
+      if (clickStyle.getMode() == ClickStyle.Raven) {
          ravenClick();
       }
-      else if (clickStyle.getMode() == ClickStyle.SKid){
+      else if (clickStyle.getMode() == ClickStyle.SKid) {
          skidClick(ev, null);
       }
    }
 
    @SubscribeEvent
    public void onTick(TickEvent.PlayerTickEvent ev) {
-      if(!Utils.Client.currentScreenMinecraft() && !(Minecraft.getMinecraft().currentScreen instanceof GuiInventory)
+      if (!Utils.Client.currentScreenMinecraft() && !(Minecraft.getMinecraft().currentScreen instanceof GuiInventory)
               && !(Minecraft.getMinecraft().currentScreen instanceof GuiChest) // to make it work in chests
       )
          return;
 
-      if(clickTimings.getMode() != ClickEvent.Tick)
+      if (clickTimings.getMode() != ClickEvent.Tick)
          return;
 
-      if(clickStyle.getMode() == ClickStyle.Raven){
+      if (clickStyle.getMode() == ClickStyle.Raven) {
          ravenClick();
       }
-      else if (clickStyle.getMode() == ClickStyle.SKid){
+      else if (clickStyle.getMode() == ClickStyle.SKid) {
          skidClick(null, ev);
       }
    }
@@ -156,7 +156,7 @@ public class RightClicker extends Module {
       double speedRight = 1.0 / io.netty.util.internal.ThreadLocalRandom.current().nextDouble(rightCPS.getInputMin() - 0.2D, rightCPS.getInputMax());
       double rightHoldLength = speedRight / io.netty.util.internal.ThreadLocalRandom.current().nextDouble(rightCPS.getInputMin() - 0.02D, rightCPS.getInputMax());
 
-      if(!Mouse.isButtonDown(1) && !rightDown){
+      if (!Mouse.isButtonDown(1) && !rightDown) {
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.getKeyCode(), false);
             Utils.Client.setMouseButtonState(1, false);
       }
@@ -188,7 +188,7 @@ public class RightClicker extends Module {
 
          if (System.currentTimeMillis() - lastClick > speedRight * 1000) {
             lastClick = System.currentTimeMillis();
-            if (rightHold < lastClick){
+            if (rightHold < lastClick) {
                rightHold = lastClick;
             }
             int key = mc.gameSettings.keyBindUseItem.getKeyCode();
@@ -202,7 +202,7 @@ public class RightClicker extends Module {
             Utils.Client.setMouseButtonState(1, false);
 
          }
-      } else if (!Mouse.isButtonDown(1)){
+      } else if (!Mouse.isButtonDown(1)) {
          this.rightClickWaiting = false;
          this.allowedClick = false;
       }
@@ -219,7 +219,7 @@ public class RightClicker extends Module {
       Mouse.poll();
       if (Mouse.isButtonDown(1)) {
          this.rightClickExecute(mc.gameSettings.keyBindUseItem.getKeyCode());
-      } else if (!Mouse.isButtonDown(1)){
+      } else if (!Mouse.isButtonDown(1)) {
          this.rightClickWaiting = false;
          this.allowedClick = false;
          this.righti = 0L;
@@ -237,8 +237,8 @@ public class RightClicker extends Module {
             }
          }
 
-         if(ignoreRods.isToggled()){
-            if(item.getItem() instanceof ItemFishingRod){
+         if (ignoreRods.isToggled()) {
+            if (item.getItem() instanceof ItemFishingRod) {
                return false;
             }
          }
@@ -261,18 +261,18 @@ public class RightClicker extends Module {
          }
       }
 
-      if(preferFastPlace.isToggled()) {
+      if (preferFastPlace.isToggled()) {
          Module fastplace = Raven.moduleManager.getModuleByClazz(FastPlace.class);
          if (fastplace != null && fastplace.isEnabled())
             return false;
       }
 
-      if(rightClickDelay.getInput() != 0){
-         if(!rightClickWaiting && !allowedClick) {
+      if (rightClickDelay.getInput() != 0) {
+         if (!rightClickWaiting && !allowedClick) {
             this.rightClickWaitStartTime = System.currentTimeMillis();
             this.rightClickWaiting = true;
             return  false;
-         } else if(this.rightClickWaiting && !allowedClick) {
+         } else if (this.rightClickWaiting && !allowedClick) {
             double passedTime = System.currentTimeMillis() - this.rightClickWaitStartTime;
             if (passedTime >= rightClickDelay.getInput()) {
                this.allowedClick = true;

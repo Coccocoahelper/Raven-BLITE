@@ -78,7 +78,7 @@ public class StringEncrypt extends Module {
             StringBuilder s3 = new StringBuilder();
             boolean w = false;
 
-            for(int i = 0; i < s.length(); ++i) {
+            for (int i = 0; i < s.length(); ++i) {
                String c = Character.toString(s.charAt(i));
                if (c.equals("§")) {
                   w = true;
@@ -100,7 +100,7 @@ public class StringEncrypt extends Module {
          } else {
             s2 = new StringBuilder();
 
-            for(int i = 0; i < s.length(); ++i) {
+            for (int i = 0; i < s.length(); ++i) {
                char c = (char)(s.charAt(i) + m3s);
                s2.append(c);
             }

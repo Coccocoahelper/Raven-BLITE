@@ -26,7 +26,7 @@ public class Blocks extends Module {
             int preferedSlot = (int) hotbarSlotPreference.getInput() - 1;
 
             ItemStack itemInSlot = mc.thePlayer.inventory.getStackInSlot(preferedSlot);
-            if(itemInSlot != null && itemInSlot.getItem() instanceof ItemBlock) {
+            if (itemInSlot != null && itemInSlot.getItem() instanceof ItemBlock) {
                 mc.thePlayer.inventory.currentItem = preferedSlot;
                 this.disable();
                 return;
@@ -35,8 +35,8 @@ public class Blocks extends Module {
 
         for (int slot = 0; slot <= 8; slot++) {
             ItemStack itemInSlot = mc.thePlayer.inventory.getStackInSlot(slot);
-            if(itemInSlot != null && itemInSlot.getItem() instanceof ItemBlock && (((ItemBlock) itemInSlot.getItem()).getBlock().isFullBlock() || ((ItemBlock) itemInSlot.getItem()).getBlock().isFullCube())) {
-                if(mc.thePlayer.inventory.currentItem != slot){
+            if (itemInSlot != null && itemInSlot.getItem() instanceof ItemBlock && (((ItemBlock) itemInSlot.getItem()).getBlock().isFullBlock() || ((ItemBlock) itemInSlot.getItem()).getBlock().isFullCube())) {
+                if (mc.thePlayer.inventory.currentItem != slot) {
                     mc.thePlayer.inventory.currentItem = slot;
                 } else {
                     return;

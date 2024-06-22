@@ -20,14 +20,12 @@ public class CommandManager {
         this.addCommand(new Update());
         this.addCommand(new Help());
         this.addCommand(new SetKey());
-        this.addCommand(new Discord());
         this.addCommand(new ConfigCommand());
         this.addCommand(new Clear());
         this.addCommand(new Debug());
         this.addCommand(new Fakechat());
         this.addCommand(new Nick());
         this.addCommand(new Ping());
-        this.addCommand(new Shoutout());
         this.addCommand(new Friends());
         this.addCommand(new VersionCommand());
 
@@ -54,7 +52,7 @@ public class CommandManager {
     }
 
     public void noSuchCommand(String name) {
-        Terminal.print("Command '" + name + "' not found! Report this on the discord if this is an error!");
+        Terminal.print("Command '" + name + "' not found! Report this on the GitHub repository if this is an error!");
     }
 
     public void executeCommand(String commandName, String[] args) {

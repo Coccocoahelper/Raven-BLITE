@@ -13,7 +13,7 @@ public class SetKey extends Command {
 
     @Override
     public void onCall(String[] args) {
-        if(args.length == 0) {
+        if (args.length == 0) {
             this.incorrectArgs();
             return;
         }

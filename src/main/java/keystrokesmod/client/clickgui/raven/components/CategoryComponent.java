@@ -43,7 +43,7 @@ public class CategoryComponent {
       this.marginX = 80;
       this.marginY = 4.5;
 
-      for(Iterator<Module> var3 = Raven.moduleManager.getModulesInCategory(this.categoryName).iterator(); var3.hasNext(); tY += 16) {
+      for (Iterator<Module> var3 = Raven.moduleManager.getModulesInCategory(this.categoryName).iterator(); var3.hasNext(); tY += 16) {
          Module mod = var3.next();
          ModuleComponent b = new ModuleComponent(mod, this, tY);
          this.modulesInCategory.add(b);
@@ -57,14 +57,14 @@ public class CategoryComponent {
 
    public void setX(int n) {
       this.x = n;
-      if(Raven.clientConfig != null){
+      if (Raven.clientConfig != null) {
          Raven.clientConfig.saveConfig();
       }
    }
 
    public void setY(int y) {
       this.y = y;
-      if(Raven.clientConfig != null){
+      if (Raven.clientConfig != null) {
          Raven.clientConfig.saveConfig();
       }
    }
@@ -87,7 +87,7 @@ public class CategoryComponent {
 
    public void setOpened(boolean on) {
       this.categoryOpened = on;
-      if(Raven.clientConfig != null){
+      if (Raven.clientConfig != null) {
          Raven.clientConfig.saveConfig();
       }
    }
@@ -98,7 +98,7 @@ public class CategoryComponent {
          int categoryHeight = 0;
 
          Component moduleRenderManager;
-         for(Iterator moduleInCategoryIterator = this.modulesInCategory.iterator(); moduleInCategoryIterator.hasNext(); categoryHeight += moduleRenderManager.getHeight()) {
+         for (Iterator moduleInCategoryIterator = this.modulesInCategory.iterator(); moduleInCategoryIterator.hasNext(); categoryHeight += moduleRenderManager.getHeight()) {
             moduleRenderManager = (Component)moduleInCategoryIterator.next();
          }
 
@@ -106,7 +106,7 @@ public class CategoryComponent {
          net.minecraft.client.gui.Gui.drawRect(this.x - 1, this.y, this.x + this.width + 1, this.y + this.bh + categoryHeight + 4, (new Color(0, 0, 0, (int)(GuiModule.backgroundOpacity.getInput()/100 * 255))).getRGB());
       }
 
-      if(GuiModule.categoryBackground.isToggled())
+      if (GuiModule.categoryBackground.isToggled())
          TickComponent.renderMain((float)(this.x - 2), (float)this.y, (float)(this.x + this.width + 2), (float)(this.y + this.bh + 3), -1);
       renderer.drawString(this.n4m ? this.pvp : this.categoryName.name(), (float)(this.x + 2), (float)(this.y + 4), Color.getHSBColor((float)(System.currentTimeMillis() % (7500L / (long)this.chromaSpeed)) / (7500.0F / (float)this.chromaSpeed), 1.0F, 1.0F).getRGB(), false);
       //renderer.drawString(this.n4m ? this.pvp : this.categoryName.name(), (float)(this.x + 2), (float)(this.y + 4), ay.astolfoColorsDraw(10, 14), false);
@@ -131,7 +131,7 @@ public class CategoryComponent {
       int o = this.bh + 3;
 
       Component c;
-      for(Iterator var2 = this.modulesInCategory.iterator(); var2.hasNext(); o += c.getHeight()) {
+      for (Iterator var2 = this.modulesInCategory.iterator(); var2.hasNext(); o += c.getHeight()) {
          c = (Component)var2.next();
          c.setComponentStartAt(o);
       }

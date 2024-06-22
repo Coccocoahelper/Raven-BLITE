@@ -59,7 +59,7 @@ public class UpdateCheck extends Module {
                     Utils.Client.openWebpage(new URL(Raven.downloadLocation));
                 } catch (MalformedURLException bruh) {
                     bruh.printStackTrace();
-                    Utils.Player.sendMessageToSelf("&cFailed to open page! Please report this bug in Raven b+'s discord");
+                    Utils.Player.sendMessageToSelf("&cFailed to open page! Please report this bug in Raven bLITE's GitHub");
                 }
             }
 

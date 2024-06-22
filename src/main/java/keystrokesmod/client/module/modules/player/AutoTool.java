@@ -44,10 +44,10 @@ public class AutoTool extends Module {
             return;
 
         // quit if the player is not tryna mine
-        if(!Mouse.isButtonDown(0)){
-            if(mining)
+        if (!Mouse.isButtonDown(0)) {
+            if (mining)
                 finishMining();
-            if(isWaiting)
+            if (isWaiting)
                 isWaiting = false;
             return;
         }
@@ -56,8 +56,8 @@ public class AutoTool extends Module {
 
         //make sure that we are allowed to breack blocks if ac is enabled
         LeftClicker autoClicker = (LeftClicker) Raven.moduleManager.getModuleByClazz(LeftClicker.class);
-        if(autoClicker.isEnabled()) {
-            if(!LeftClicker.breakBlocks.isToggled()) {
+        if (autoClicker.isEnabled()) {
+            if (!LeftClicker.breakBlocks.isToggled()) {
                 return;
             }
         }
@@ -68,15 +68,15 @@ public class AutoTool extends Module {
             Block stateBlock = mc.theWorld.getBlockState(lookingAtBlock).getBlock();
             if (stateBlock != Blocks.air && !(stateBlock instanceof BlockLiquid) && stateBlock instanceof Block) {
 
-                if(mineDelay.getInputMax() > 0){
-                    if(previousBlock != null){
-                        if(previousBlock!=stateBlock){
+                if (mineDelay.getInputMax() > 0) {
+                    if (previousBlock != null) {
+                        if (previousBlock!=stateBlock) {
                             previousBlock = stateBlock;
                             isWaiting = true;
                             delay.setCooldown((long)ThreadLocalRandom.current().nextDouble(mineDelay.getInputMin(), mineDelay.getInputMax() + 0.01));
                             delay.start();
                         } else {
-                            if(isWaiting && delay.hasFinished()) {
+                            if (isWaiting && delay.hasFinished()) {
                                 isWaiting = false;
                                 previousSlot = Utils.Player.getCurrentPlayerSlot();
                                 mining = true;
@@ -90,7 +90,7 @@ public class AutoTool extends Module {
                     return;
                 }
 
-                if(!mining) {
+                if (!mining) {
                     previousSlot = Utils.Player.getCurrentPlayerSlot();
                     mining = true;
                 }
@@ -100,27 +100,27 @@ public class AutoTool extends Module {
         }
     }
 
-    public void finishMining(){
-        if(hotkeyBack.isToggled()) {
+    public void finishMining() {
+        if (hotkeyBack.isToggled()) {
             Utils.Player.hotkeyToSlot(previousSlot);
         }
         justFinishedMining = false;
         mining = false;
     }
 
-    private void hotkeyToFastest(){
+    private void hotkeyToFastest() {
         int index = -1;
         double speed = 1;
 
 
         for (int slot = 0; slot <= 8; slot++) {
             ItemStack itemInSlot = mc.thePlayer.inventory.getStackInSlot(slot);
-            if(itemInSlot != null) {
-                if( itemInSlot.getItem() instanceof ItemTool || itemInSlot.getItem() instanceof ItemShears){
+            if (itemInSlot != null) {
+                if ( itemInSlot.getItem() instanceof ItemTool || itemInSlot.getItem() instanceof ItemShears) {
                     BlockPos p = mc.objectMouseOver.getBlockPos();
                     Block bl = mc.theWorld.getBlockState(p).getBlock();
 
-                    if(itemInSlot.getItem().getDigSpeed(itemInSlot, bl.getDefaultState()) > speed) {
+                    if (itemInSlot.getItem().getDigSpeed(itemInSlot, bl.getDefaultState()) > speed) {
                         speed = itemInSlot.getItem().getDigSpeed(itemInSlot, bl.getDefaultState());
                         index = slot;
                     }
@@ -128,7 +128,7 @@ public class AutoTool extends Module {
             }
         }
 
-        if(index == -1 || speed <= 1.1 || speed == 0) {
+        if (index == -1 || speed <= 1.1 || speed == 0) {
         } else {
             Utils.Player.hotkeyToSlot(index);
         }

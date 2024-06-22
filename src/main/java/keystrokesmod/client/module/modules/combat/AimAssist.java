@@ -50,10 +50,10 @@ public class AimAssist extends Module {
 
    public void update() {
 
-      if(!Utils.Client.currentScreenMinecraft()){
+      if (!Utils.Client.currentScreenMinecraft()) {
          return;
       }
-      if(!Utils.Player.isPlayerInGame()) return;
+      if (!Utils.Player.isPlayerInGame()) return;
 
          if (breakBlocks.isToggled() && mc.objectMouseOver != null) {
             BlockPos p = mc.objectMouseOver.getBlockPos();
@@ -96,23 +96,23 @@ public class AimAssist extends Module {
 
 
    public static boolean isAFriend(Entity entity) {
-      if(entity == mc.thePlayer) return true;
+      if (entity == mc.thePlayer) return true;
 
-      for (Entity wut : friends){
+      for (Entity wut : friends) {
          if (wut.equals(entity))
             return true;
       }
       try {
          EntityPlayer bruhentity = (EntityPlayer) entity;
-         if(Raven.debugger){
+         if (Raven.debugger) {
             Utils.Player.sendMessageToSelf("unformatted / " + bruhentity.getDisplayName().getUnformattedText().replace("§", "%"));
 
             Utils.Player.sendMessageToSelf("susbstring entity / " + bruhentity.getDisplayName().getUnformattedText().substring(0, 2));
             Utils.Player.sendMessageToSelf("substring player / " + mc.thePlayer.getDisplayName().getUnformattedText().substring(0, 2));
          }
-         if(mc.thePlayer.isOnSameTeam((EntityLivingBase) entity) || mc.thePlayer.getDisplayName().getUnformattedText().startsWith(bruhentity.getDisplayName().getUnformattedText().substring(0, 2))) return true;
+         if (mc.thePlayer.isOnSameTeam((EntityLivingBase) entity) || mc.thePlayer.getDisplayName().getUnformattedText().startsWith(bruhentity.getDisplayName().getUnformattedText().substring(0, 2))) return true;
       } catch (Exception fhwhfhwe) {
-         if(Raven.debugger) {
+         if (Raven.debugger) {
             Utils.Player.sendMessageToSelf(fhwhfhwe.getMessage());
          }
       }
@@ -158,7 +158,7 @@ public class AimAssist extends Module {
       boolean found = false;
       for (Entity entity:mc.theWorld.getLoadedEntityList()) {
          if (entity.getName().equalsIgnoreCase(name) || entity.getCustomNameTag().equalsIgnoreCase(name)) {
-            if(!isAFriend(entity)) {
+            if (!isAFriend(entity)) {
                addFriend(entity);
                found = true;
             }
@@ -185,7 +185,7 @@ public class AimAssist extends Module {
    public static boolean removeFriend(Entity entityPlayer) {
       try{
          friends.remove(entityPlayer);
-      } catch (Exception eeeeee){
+      } catch (Exception eeeeee) {
          eeeeee.printStackTrace();
          return false;
       }
