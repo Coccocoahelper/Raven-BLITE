@@ -55,7 +55,7 @@ public class Raven {
    public static CommandManager commandManager;
    public static final String sourceLocation = "https://github.com/Coccocoahelper/Raven-BLITE";
    public static final String downloadLocation = "https://github.com/Coccocoahelper/Raven-BLITE/raw/main/build/libs/%5B1.8.9%5D%20BetterKeystrokes%20V-1.2.jar";
-   public static String[] updateText = {"Your version of Raven B+ (" + versionManager.getClientVersion().toString() + ") is outdated!", "Enter the command update into client CommandLine to open the download page", "or just enable the update module to get a message in chat.", "", "Newest version: " + versionManager.getLatestVersion().toString()};
+   public static String[] updateText = {"Your version of Raven BLITE (" + versionManager.getClientVersion().toString() + ") is outdated!", "Enter the command update into client CommandLine to open the download page", "or just enable the update module to get a message in chat.", "", "Newest version: " + versionManager.getLatestVersion().toString()};
    public static ConfigManager configManager;
    public static ClientConfig clientConfig;
 
