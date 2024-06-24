@@ -75,7 +75,7 @@ public class HitBox extends Module {
 
    public static double exp(Entity en) {
       Module hitBox = Raven.moduleManager.getModuleByClazz(HitBox.class);
-      return (hitBox != null && hitBox.isEnabled() ? a.getInput() : 1.0D;
+      return (hitBox != null && hitBox.isEnabled() ? a.getInput() : 1.0D);
    }
 
    public static void gmo(float partialTicks) {

@@ -47,8 +47,7 @@ public class MurderMystery extends Module {
                EntityPlayer entity;
                do {
                   do {
-                     do {
-                        if (!entityPlayerIterator.hasNext()) {
+                     if (!entityPlayerIterator.hasNext()) {
                         return;
                      }
 
