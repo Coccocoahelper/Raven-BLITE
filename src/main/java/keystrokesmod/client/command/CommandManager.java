@@ -24,7 +24,6 @@ public class CommandManager {
         this.addCommand(new Clear());
         this.addCommand(new Debug());
         this.addCommand(new Fakechat());
-        this.addCommand(new Nick());
         this.addCommand(new Ping());
         this.addCommand(new Friends());
         this.addCommand(new VersionCommand());

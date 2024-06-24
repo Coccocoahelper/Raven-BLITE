@@ -9,7 +9,6 @@ import keystrokesmod.client.module.modules.movement.*;
 import keystrokesmod.client.module.modules.other.*;
 import keystrokesmod.client.module.modules.player.*;
 import keystrokesmod.client.module.modules.render.*;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.module.modules.world.ChatLogger;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.client.gui.FontRenderer;
@@ -44,7 +43,6 @@ public class ModuleManager {
       addModule(new FastPlace());
       addModule(new NoFall());
       addModule(new SafeWalk());
-      addModule(new AntiBot());
       addModule(new AntiShuffle());
       addModule(new Chams());
       addModule(new ChestESP());

@@ -5,7 +5,6 @@ import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.DescriptionSetting;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -93,9 +92,7 @@ public class PlayerESP extends Module {
                   } while(en.deathTime != 0);
                } while(!f.isToggled() && en.isInvisible());
 
-               if (!AntiBot.bot(en)) {
-                  this.r(en, rgb);
-               }
+               this.r(en, rgb);
             }
          }
       }

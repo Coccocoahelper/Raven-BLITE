@@ -3,7 +3,6 @@ package keystrokesmod.client.module.modules.render;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -39,10 +38,6 @@ public class Nametags extends Module {
          if (e.entity instanceof EntityPlayer && e.entity != mc.thePlayer && e.entity.deathTime == 0) {
             EntityPlayer en = (EntityPlayer)e.entity;
             if (!d.isToggled() && en.isInvisible()) {
-               return;
-            }
-
-            if (AntiBot.bot(en) || en.getDisplayNameString().isEmpty()) {
                return;
             }
 

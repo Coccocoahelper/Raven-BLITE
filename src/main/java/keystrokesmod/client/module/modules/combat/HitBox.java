@@ -4,7 +4,6 @@ import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.Entity;
@@ -76,7 +75,7 @@ public class HitBox extends Module {
 
    public static double exp(Entity en) {
       Module hitBox = Raven.moduleManager.getModuleByClazz(HitBox.class);
-      return (hitBox != null && hitBox.isEnabled() && !AntiBot.bot(en)) ? a.getInput() : 1.0D;
+      return (hitBox != null && hitBox.isEnabled() ? a.getInput() : 1.0D;
    }
 
    public static void gmo(float partialTicks) {

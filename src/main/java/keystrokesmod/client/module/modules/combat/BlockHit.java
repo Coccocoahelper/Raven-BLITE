@@ -1,7 +1,6 @@
 package keystrokesmod.client.module.modules.combat;
 
 import keystrokesmod.client.module.*;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.module.setting.impl.DescriptionSetting;
 import keystrokesmod.client.module.setting.impl.DoubleSliderSetting;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
@@ -119,11 +118,6 @@ public class BlockHit extends Module {
                             return;
                         }
                     }
-
-                    if (AntiBot.bot(target)) {
-                        return;
-                    }
-
 
                     if (hitCoolDown && !alreadyHit) {
                         hitsWaited++;

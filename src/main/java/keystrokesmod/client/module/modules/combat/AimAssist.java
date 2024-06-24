@@ -5,7 +5,6 @@ import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.modules.player.RightClicker;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
 import keystrokesmod.client.module.setting.impl.TickSetting;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -133,18 +132,16 @@ public class AimAssist extends Module {
                do {
                   do {
                      do {
-                        do {
-                           if (!var2.hasNext()) {
-                              return null;
-                           }
+                        if (!var2.hasNext()) {
+                           return null;
+                        }
 
-                           en = (EntityPlayer) var2.next();
-                        } while (ignoreFriends.isToggled() && isAFriend(en));
-                     } while(en == mc.thePlayer);
-                  } while(en.isDead);
-               } while(!aimInvis.isToggled() && en.isInvisible());
-            } while((double)mc.thePlayer.getDistanceToEntity(en) > distance.getInput());
-         } while(AntiBot.bot(en));
+                        en = (EntityPlayer) var2.next();
+                     } while (ignoreFriends.isToggled() && isAFriend(en));
+                  } while(en == mc.thePlayer);
+               } while(en.isDead);
+            } while(!aimInvis.isToggled() && en.isInvisible());
+         } while((double)mc.thePlayer.getDistanceToEntity(en) > distance.getInput());
       } while(!blatantMode.isToggled() && !Utils.Player.fov(en, (float)fov));
 
       return en;

@@ -4,7 +4,6 @@ import keystrokesmod.client.main.Raven;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.TickSetting;
 import keystrokesmod.client.module.modules.render.PlayerESP;
-import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
@@ -50,13 +49,12 @@ public class MurderMystery extends Module {
                   do {
                      do {
                         if (!entityPlayerIterator.hasNext()) {
-                           return;
-                        }
+                        return;
+                     }
 
-                        entity = (EntityPlayer)entityPlayerIterator.next();
-                     } while(entity == mc.thePlayer);
-                  } while(entity.isInvisible());
-               } while(AntiBot.bot(entity));
+                     entity = (EntityPlayer)entityPlayerIterator.next();
+                  } while(entity == mc.thePlayer);
+               } while(entity.isInvisible());
                String c4 = "&7[&cALERT&7]";
                if (entity.getHeldItem() != null && entity.getHeldItem().hasDisplayName()) {
                   Item i = entity.getHeldItem().getItem();
